@@ -1,9 +1,9 @@
 document.addEventListener('deviceready', function() {
-    if (Pedometer) {
-      Pedometer.isStepCountingAvailable(function(isAvailable) {
+    if (pedometer) {
+      pedometer.isStepCountingAvailable(function(isAvailable) {
         if (isAvailable) {
           // Start pedometer updates
-          Pedometer.startPedometerUpdates(function(pedometerData) {
+          pedometer.startPedometerUpdates(function(pedometerData) {
             // pedometerData contains: steps, distance, floors ascended/descended, etc.
             updateSteps(pedometerData.numberOfSteps);
           }, function(error) {

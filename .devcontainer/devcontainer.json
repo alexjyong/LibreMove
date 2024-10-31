@@ -1,6 +1,7 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/universal:2",
-    "features": {
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
       "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-    }
-  }
+  },
+  "initializeCommand": "echo \"alias cordova-docker='docker run --rm -v \\$PWD:/workspace -w /workspace ghcr.io/alexjyong/libremove:main sh -c'\" >> ~/.bashrc"
+}
