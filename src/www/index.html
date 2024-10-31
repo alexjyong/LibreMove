@@ -41,44 +41,5 @@
   <script src="cordova.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
   <script>eruda.init();</script>
-
-  <!-- Main JavaScript to manage step counting and circle progress -->
-  <script>
-    document.addEventListener('deviceready', function() {
-      if (Pedometer) {
-        Pedometer.isStepCountingAvailable(function(isAvailable) {
-          if (isAvailable) {
-            // Start tracking steps
-            Pedometer.startPedometerUpdates(function(pedometerData) {
-              updateSteps(pedometerData.numberOfSteps);
-            }, function(error) {
-              console.log("Error starting pedometer updates: " + error);
-            });
-          } else {
-            console.log("Step counting is not available on this device.");
-          }
-        });
-      }
-    }, false);
-
-    // Function to update steps in the UI
-    function updateSteps(steps) {
-      // Update the text showing the number of steps
-      document.getElementById('steps').innerHTML = "Steps today: " + steps;
-
-      // Update the circle closing logic
-      updateCircle(steps);
-    }
-
-    // Function to update the progress circle based on steps
-    function updateCircle(steps) {
-      const goal = 10000; // Example step goal
-      const percentage = Math.min((steps / goal) * 100, 100); // Cap at 100%
-      const circle = document.getElementById('progress-circle');
-
-      // Update the progress circle's stroke-dasharray to reflect progress
-      circle.style.strokeDasharray = `${percentage} 100`;
-    }
-  </script>
 </body>
 </html>
