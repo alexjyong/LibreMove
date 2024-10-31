@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="dev.alexjyong.libremove" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>LibreMove</name>
+    <description>Open-source fitness app with daily step tracking and closing circles a la Samsung Health/Google Fit/Apple Health, built using Cordova.</description>
+    <author email="alexjyong@gmail.com" href="https://alexjyong.dev">
+        Alex Yong
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <platform name="android">
+    <preference name="GradleVersion" value="8.4" />
+    <preference name="AndroidGradlePluginVersion" value="8.1.1" />
+    <preference name="android-minSdkVersion" value="26" />
+    <preference name="android-targetSdkVersion" value="34" />
+    <config-file target="AndroidManifest.xml" parent="/*" xmlns:android="http://schemas.android.com/apk/res/android">
+        <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    </config-file>
+</platform>
+</widget>
