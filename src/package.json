@@ -14,6 +14,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "cordova-android": "^13.0.0",
+    "cordova-plugin-android-permissions": "^1.1.5",
     "cordova-plugin-pedometer": "^0.4.1"
   },
   "cordova": {
@@ -21,7 +22,8 @@
       "android"
     ],
     "plugins": {
-      "cordova-plugin-pedometer": {}
+      "cordova-plugin-pedometer": {},
+      "cordova-plugin-android-permissions": {}
     }
   }
 }

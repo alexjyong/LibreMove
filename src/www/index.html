@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LibreMove</title>
-  <style>
+  <style> 
+    /* TODO move this to a separate file plz */
     /* Styles for the progress circle */
     svg {
       display: block;
       margin: 20px auto;
     }
-
+  
     circle {
-      transition: stroke-dasharray 0.3s;
+      transition: stroke-dashoffset 0.3s, stroke-dasharray 0.3s;
       transform: rotate(-90deg);
       transform-origin: 50% 50%;
     }
-
+  
     /* Optional: style for the page */
     body {
       font-family: Arial, sans-serif;
