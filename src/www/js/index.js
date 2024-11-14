@@ -14,10 +14,10 @@ document.addEventListener('deviceready', function() {
 
 function requestHealthConnectPermissions() {
     cordova.plugins.health.requestAuthorization(
-        { read: ['steps'] },
+        { read: ['steps'], write: ['steps'] },
         function() {
             console.log("Health Connect permissions granted");
-            fetchHealthConnectData();
+            startHealthConnectPolling();
         },
         function(error) {
             console.log("Health Connect permissions denied or unavailable");
@@ -27,20 +27,26 @@ function requestHealthConnectPermissions() {
     );
 }
 
-function fetchHealthConnectData() {
-    // Fetch steps for the current day using Health Connect
-    const today = new Date();
-    const startOfDay = new Date(today.setHours(0, 0, 0, 0));
-    const endOfDay = new Date(today.setHours(23, 59, 59, 999));
+function startHealthConnectPolling() {
+    fetchHealthConnectData(); // Initial fetch
+    setInterval(fetchHealthConnectData, 5000); // Poll every 5 seconds
+}
 
-    cordova.plugins.health.query({
+function fetchHealthConnectData() {
+
+    const today = new Date();
+    const startOfDay = new Date(today.setHours(0, 0, 0, 0)); // Set to midnight of today
+    const endOfDay = new Date(); // Set to current time for the end of the query
+
+    cordova.plugins.health.queryAggregated({
         startDate: startOfDay,
         endDate: endOfDay,
         dataType: 'steps',
-        bucket: 'day'
+        bucket: 'day' // Aggregate data by day
     }, function(data) {
+        console.log(data);
         if (data.length > 0) {
-            const steps = data[0].value;
+            const steps = data[0].value; // Today's steps
             updateSteps(steps);
         } else {
             console.log("No steps data available for today from Health Connect.");
@@ -50,6 +56,8 @@ function fetchHealthConnectData() {
         initializePedometerFallback(); // Fall back if data fetch fails
     });
 }
+
+
 
 function initializePedometerFallback() {
     const permissions = cordova.plugins.permissions;

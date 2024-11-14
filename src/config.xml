@@ -16,6 +16,8 @@
     <config-file target="AndroidManifest.xml" parent="/*" xmlns:android="http://schemas.android.com/apk/res/android">
         <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
         <uses-permission android:name="android.permission.health.READ_STEPS"/>
+        <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+        <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH"/>
     </config-file>
 </platform>
 </widget>
